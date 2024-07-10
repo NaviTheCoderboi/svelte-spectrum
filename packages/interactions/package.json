@@ -1,0 +1,34 @@
+{
+    "name": "@svelte-aria/interactions",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "type": "module",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsup src --dts",
+        "build:fast": "tsup src",
+        "dev": "pnpm build:fast --watch",
+        "clean": "rimraf dist",
+        "typecheck": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@repo/ts-config": "workspace:*",
+        "@repo/eslint-config": "workspace:*"
+    },
+    "peerDependencies": {
+        "svelte": "5.0.0-next.175"
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "tsup": {
+        "clean": true,
+        "target": "esnext",
+        "format": [
+            "esm"
+        ]
+    }
+}
