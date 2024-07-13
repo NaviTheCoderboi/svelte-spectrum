@@ -1,22 +1,11 @@
-import type { DOMAttributes } from 'svelte/elements';
+import type { DOMAttributes } from '../shared/dom';
+import type { PointerType, HoverEvents } from '../shared/events';
 
-export interface HoverEventContext {
-    type: 'hoverstart' | 'hoverend';
-    pointerType: 'mouse' | 'pen' | 'touch' | '';
-    target: HTMLElement;
-}
-
-export interface HoverEvents {
-    onHoverStart?: (event: HoverEventContext) => void;
-    onHoverEnd?: (event: HoverEventContext) => void;
-    onHoverChange?: (isHovered: boolean) => void;
-}
-
-export interface HoverProps extends HoverEvents {
+export interface HoverProps<T extends Element = Element> extends HoverEvents<T> {
     isDisabled?: boolean;
 }
 
-export interface HoverResult<T extends HTMLElement> {
+export interface HoverResult<T extends Element = Element> {
     hoverProps: () => DOMAttributes<T>;
     isHovered: () => boolean;
 }
@@ -62,19 +51,19 @@ const setupGlobalTouchEvents = () => {
     };
 };
 
-export const useHover = <T extends HTMLElement>(props: HoverProps = {}): HoverResult<T> => {
+export const useHover = <T extends Element = Element>(props: HoverProps = {}): HoverResult<T> => {
     const { onHoverStart, onHoverEnd, onHoverChange, isDisabled } = props;
 
     let isHovered = $state(false);
     const state = $state<{
         isHovered: boolean;
         ignoreEmulatedMouseEvents: boolean;
-        pointerType: 'mouse' | 'pen' | 'touch' | '';
+        pointerType: PointerType;
         target: (EventTarget & T) | null;
     }>({
         isHovered: false,
         ignoreEmulatedMouseEvents: false,
-        pointerType: '',
+        pointerType: '' as PointerType,
         target: null
     });
 
@@ -85,11 +74,10 @@ export const useHover = <T extends HTMLElement>(props: HoverProps = {}): HoverRe
             event: MouseEvent & {
                 currentTarget: EventTarget & T;
             },
-            pointerType: 'touch' | 'mouse' | 'pen' | ''
+            pointerType: PointerType
         ) => {
             state.pointerType = pointerType;
             if (
-                // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
                 isDisabled ||
                 pointerType === 'touch' ||
                 state.isHovered ||
@@ -121,9 +109,9 @@ export const useHover = <T extends HTMLElement>(props: HoverProps = {}): HoverRe
             event: MouseEvent & {
                 currentTarget: EventTarget & T;
             },
-            pointerType: 'touch' | 'mouse' | 'pen' | ''
+            pointerType: PointerType
         ) => {
-            state.pointerType = '';
+            state.pointerType = '' as PointerType;
             state.target = null;
 
             if (pointerType === 'touch' || !state.isHovered) return;
@@ -155,12 +143,12 @@ export const useHover = <T extends HTMLElement>(props: HoverProps = {}): HoverRe
                     return;
                 }
 
-                triggerHoverStart(e, e.pointerType as 'touch' | 'mouse' | 'pen' | '');
+                triggerHoverStart(e, e.pointerType as PointerType);
             };
 
             hoverProps.onpointerleave = (e) => {
                 if (!isDisabled && e.currentTarget.contains(e.target as Element)) {
-                    triggerHoverEnd(e, e.pointerType as 'touch' | 'mouse' | 'pen' | '');
+                    triggerHoverEnd(e, e.pointerType as PointerType);
                 }
             };
         } else {
@@ -191,7 +179,7 @@ export const useHover = <T extends HTMLElement>(props: HoverProps = {}): HoverRe
 
     $effect(() => {
         if (isDisabled) {
-            // @ts-expect-error - ignore it pls
+            // @ts-expect-error - ignore it for now
             triggerHoverEnd({ currentTarget: state.target }, state.pointerType);
         }
     });

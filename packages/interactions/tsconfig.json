@@ -1,8 +1,9 @@
 {
     "extends": "@repo/ts-config/base.tsconfig.json",
     "compilerOptions": {
-        "types": ["svelte"]
+        "strictNullChecks": true,
+        "types": ["svelte", "@types/node", "./src/global.d.ts"]
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/**/*.d.ts"],
     "exclude": ["node_modules", "dist", ".turbo"]
 }
