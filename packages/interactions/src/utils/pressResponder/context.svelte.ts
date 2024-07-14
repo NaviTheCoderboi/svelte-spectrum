@@ -1,5 +1,5 @@
 import type { PressProps } from '../../hooks/usePress.svelte';
-import type { FocusableElement } from '../../shared/dom';
+import type { FocusableElement } from '@svelte-types/shared';
 
 export interface IPressResponderContext<T extends FocusableElement = FocusableElement>
     extends PressProps<T> {

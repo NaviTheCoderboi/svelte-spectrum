@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { chain } from './chain';
-import { mergeIds } from './hooks/useId';
+import { mergeIds } from './useId';
 
 type Props = Record<string, any>;
 

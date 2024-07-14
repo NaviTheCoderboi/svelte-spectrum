@@ -1,22 +1,31 @@
+import { getContext } from 'svelte';
+import { disableTextSelection, restoreTextSelection } from '../utils/textSelection';
 import {
     contextName,
     PressResponderContext,
     type IPressResponderContext
 } from '../utils/pressResponder/context.svelte';
-import { getContext } from 'svelte';
-import { mergeProps } from '../utils/mergeProps';
-import { useSyncRef } from '../utils/hooks/useSyncRef.svelte';
-import { useEffectEvent } from '../utils/hooks/useEffectEvent.svelte';
-import { useGlobalListeners } from '../utils/hooks/useGlobalListerners.svelte';
-import { disableTextSelection, restoreTextSelection } from '../utils/textSelection';
-import { getOwnerDocument, getOwnerWindow } from '../utils/domHelpers';
-import { openLink } from '../utils/openLink';
-import { isVirtualClick, isVirtualPointerEvent } from '../utils/isVirtualEvent';
-import { focusWithoutScrolling } from '../utils/focusWithoutScrolling';
-import { chain } from '../utils/chain';
-import { isMac } from '../utils/platform';
-import type { FocusableElement, DOMAttributes } from '../shared/dom';
-import type { PressEvents, PointerType, PressEvent as IPressEvent } from '../shared/events';
+import {
+    mergeProps,
+    useSyncRef,
+    useEffectEvent,
+    useGlobalListeners,
+    getOwnerDocument,
+    getOwnerWindow,
+    openLink,
+    isVirtualClick,
+    isVirtualPointerEvent,
+    focusWithoutScrolling,
+    chain,
+    isMac
+} from '@svelte-aria/utils';
+import type {
+    FocusableElement,
+    DOMAttributes,
+    PressEvents,
+    PointerType,
+    PressEvent as IPressEvent
+} from '@svelte-types/shared';
 
 export interface PressProps<T extends FocusableElement = FocusableElement> extends PressEvents<T> {
     isPressed?: boolean;

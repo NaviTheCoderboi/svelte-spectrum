@@ -1,9 +1,9 @@
-declare interface Navigator extends NavigatorUA {}
-declare interface WorkerNavigator extends NavigatorUA {}
-
 declare interface KeyboardEventInit {
     keyIdentifier?: string;
 }
+
+declare interface Navigator extends NavigatorUA {}
+declare interface WorkerNavigator extends NavigatorUA {}
 
 declare interface NavigatorUA {
     readonly userAgentData?: NavigatorUAData;

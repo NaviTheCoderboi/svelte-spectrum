@@ -1,5 +1,4 @@
-import type { DOMAttributes } from '../shared/dom';
-import type { PointerType, HoverEvents } from '../shared/events';
+import type { DOMAttributes, PointerType, HoverEvents } from '@svelte-types/shared';
 
 export interface HoverProps<T extends Element = Element> extends HoverEvents<T> {
     isDisabled?: boolean;

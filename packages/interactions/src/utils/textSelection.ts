@@ -1,6 +1,4 @@
-import { getOwnerDocument } from './domHelpers';
-import { isIOS } from './platform';
-import { runAfterTransition } from './runAfterTransition';
+import { runAfterTransition, isIOS, getOwnerDocument } from '@svelte-aria/utils';
 
 type State = 'default' | 'disabled' | 'restoring';
 let state: State = 'default';

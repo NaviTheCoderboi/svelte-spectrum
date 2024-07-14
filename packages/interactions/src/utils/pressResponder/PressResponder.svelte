@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { mergeProps } from '../mergeProps';
-    import { useSyncRef } from '../hooks/useSyncRef.svelte';
+    import { mergeProps,useSyncRef } from '@svelte-aria/utils';
     import { contextName, PressResponderContext } from './context.svelte';
     import { getContext, setContext, type Snippet } from 'svelte';
     import type { PressProps } from '../../hooks/usePress.svelte';
-    import type { FocusableElement } from '../../shared/dom';
+    import type { FocusableElement } from '@svelte-types/shared';
     import type { IPressResponderContext } from './context.svelte';
 
     let {

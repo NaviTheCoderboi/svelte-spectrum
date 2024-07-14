@@ -1,0 +1,16 @@
+{
+    "name": "@svelte-types/shared",
+    "version": "1.0.0",
+    "types": "src/index.d.ts",
+    "type": "module",
+    "license": "MIT",
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
+    "peerDependencies": {
+        "svelte": "5.0.0-next.175"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

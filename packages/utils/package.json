@@ -1,5 +1,5 @@
 {
-    "name": "@svelte-aria/interactions",
+    "name": "@svelte-aria/utils",
     "version": "1.0.0",
     "main": "src/index.ts",
     "module": "src/index.ts",
@@ -21,7 +21,6 @@
     },
     "dependencies": {
         "clsx": "^2.1.1",
-        "@svelte-types/shared": "workspace:*",
-        "@svelte-aria/utils": "workspace:*"
+        "@svelte-types/shared": "workspace:*"
     }
 }

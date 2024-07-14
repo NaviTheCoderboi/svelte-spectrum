@@ -1,4 +1,4 @@
-import type { FocusableElement } from '../shared/dom';
+import type { FocusableElement } from '@svelte-types/shared';
 
 interface ScrollableElement {
     element: HTMLElement;
