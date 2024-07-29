@@ -1,0 +1,21 @@
+{
+    "name": "@svelte-aria/live-announcer",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
+    "type": "module",
+    "license": "MIT",
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint -c eslint.config.js src/**/*.ts"
+    },
+    "devDependencies": {
+        "@repo/eslint-config": "workspace:*"
+    },
+    "peerDependencies": {
+        "svelte": "5.0.0-next.175"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

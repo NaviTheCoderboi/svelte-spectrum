@@ -1,0 +1,10 @@
+{
+    "extends": "../../../base.tsconfig.json",
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "types": ["svelte"],
+        "resolveJsonModule": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.d.ts"],
+    "exclude": ["node_modules", "dist", ".turbo"]
+}

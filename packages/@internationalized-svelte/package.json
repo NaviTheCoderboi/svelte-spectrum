@@ -1,0 +1,35 @@
+{
+    "name": "@internationalized-svelte/string",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
+    "type": "module",
+    "license": "MIT",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint -c eslint.config.js src/**/*.ts",
+        "build": "tsup src --dts",
+        "build:fast": "tsup src",
+        "dev": "pnpm build:fast --watch",
+        "clean": "rimraf dist .turbo"
+    },
+    "devDependencies": {
+        "@repo/eslint-config": "workspace:*"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "tsup": {
+        "clean": true,
+        "target": "esnext",
+        "format": [
+            "esm"
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    color: #fff;
+}
